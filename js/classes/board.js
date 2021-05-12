@@ -14,7 +14,7 @@ class Board {
     let row = [];
     this.getBoard().forEach((square, i) => {
       row.push(square.getText());
-      if (i === 2 || i === 5 || i === 8) {
+      if (i % 3 === 2) {
         rowedBoard.push(row);
         row = [];
       }
@@ -23,16 +23,10 @@ class Board {
   }
 
   getColumnedBoard() {
-    let columnedBoard = [];
-    let column = [];
-    let column2 = [];
-    let column3 = [];
+    let columnedBoard = [ [], [], [] ];
     this.getBoard().forEach((square, i) => {
-      if (i === 0 || i === 3 || i === 6) column.push(square.getText());
-      if (i === 1 || i === 4 || i === 7) column2.push(square.getText());
-      if (i === 2 || i === 5 || i === 8) column3.push(square.getText());
-    });
-    columnedBoard.push(column, column2, column3);
+      columnedBoard[i%3].push(square.getText())
+    })
     return columnedBoard;
   }
 
